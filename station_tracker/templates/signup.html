@@ -1,0 +1,52 @@
+<h1>Signup</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="p-2">
+      <form onsubmit="return handleData()" method="post" action="https://postman-echo.com/post">
+      <div >
+      <input type="checkbox" name="customer" id="customer" />
+      <label for="Customer">Customer</label>
+      </div>
+      <div>
+      <input type="checkbox" name="gas_station_owner" id="gas_station_owner" />
+      <label for="agree">Gas Station Owner</label>
+      </div>
+    </div>
+    <!--<button type="submit">Create Account</button>-->
+   <button type="button" id="submit-button">Create Account</button>
+    <button type="button" id="cancel-button">Back</button> 
+    <div>
+      <p>Already have an account? <a href="{% url 'login' %}">Login</a</div>
+    <!--<a href="{% url 'login' %}">Already have account?</a> --> 
+    
+</form>
+
+{# Display messages here #}
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div id="success-message" style="display: none;">
+   Account Created Successfully !!
+</div>
+<script>  
+
+  // Add an event listener to the "Submit" button
+           document.getElementById("submit-button").addEventListener("click", function() {
+               // Show the success message when the "Submit" button is clicked
+               document.getElementById("success-message").style.display = "block";
+           });
+  
+  // Add an event listener to the "Cancel" button
+  document.getElementById("cancel-button").addEventListener("click", function() {
+      // Redirect to the movie list page when the "Cancel" button is clicked
+     window.location.href = "{% url 'login' %}";
+  });
+
+</script>
+
