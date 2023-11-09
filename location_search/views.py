@@ -7,9 +7,10 @@ from .forms import SearchForm
 
 
 
-def printHello(request):
+def searchPage(request):
     return render(request,'stuff.html')
 
-class SearchCreate(CreateView):
-    model = models.Search
-    fields = ["location","range"]
+def SearchEntry(request):
+    form = UploadForm(request.Post, request.Files)
+    print(request.FILES)
+    return
