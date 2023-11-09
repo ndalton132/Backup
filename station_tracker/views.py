@@ -41,3 +41,14 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
+
+# Create your views here.
+def home(request):
+  return render(request, 'index.html')
+    
+
+  
+

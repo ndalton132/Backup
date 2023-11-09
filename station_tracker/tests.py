@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 # Create your tests here.
+
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -24,4 +25,5 @@ class MyTestCase(TestCase):
          response = client.get(reverse('logout'))
          self.assertEqual(response.status_code, 302)  # 302 is the status code for a redirect
          self.assertFalse(response.context['user'].is_authenticated)
+
 

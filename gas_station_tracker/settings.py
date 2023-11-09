@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-5nslf-su#bne0qz$&(8&eutx%7s=y9l5jc-h(4f=gh*s7e%1zt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -38,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'station_tracker'
+
+    'station_tracker',
+    'location_search',
+
+
 ]
 
 MIDDLEWARE = [
@@ -56,7 +61,11 @@ ROOT_URLCONF = 'gas_station_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+
         'DIRS': ['templates'],
+
+        'DIRS': [],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
