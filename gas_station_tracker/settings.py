@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-5nslf-su#bne0qz$&(8&eutx%7s=y9l5jc-h(4f=gh*s7e%1zt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#Changed allowed hosts
 ALLOWED_HOSTS = ['*']
 
 

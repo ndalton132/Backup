@@ -5,6 +5,8 @@ from location_search import views as searchViews
 
 urlpatterns = [
    path('', home,name="home"),
+
+    #Find Gas stations button
    path('location_search/', searchViews.searchPage, name = "findGas"),
 
     
