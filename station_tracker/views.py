@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from .forms import UserCreationForm, LoginForm
+from django.shortcuts import render, get_object_or_404, get_list_or_404
+from .models import Feedback
 
 # Create your views here.
 #def home(request):
@@ -41,3 +43,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+
+def feedback_form(request):
+  return render(request, 'feedback.html')
