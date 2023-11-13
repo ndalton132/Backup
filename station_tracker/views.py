@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from .forms import UserCreationForm, LoginForm
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from .models import Feedback
+from .models import Feedback, Gas_Station
+import folium
 
 # Create your views here.
 #def home(request):
@@ -47,3 +48,15 @@ def user_logout(request):
 
 def feedback_form(request):
   return render(request, 'feedback.html')
+
+def test_url(request):
+    stations =  Gas_Station.objects.all()
+    
+    station_map = folium.Map(location=[38.83528, -104.82118], zoom_start=13)
+
+    for station in stations:
+        coords = (station.latitude, station.longitude)
+        folium.Marker(coords).add_to(station_map)
+
+    context = {'map': station_map._repr_html_()}
+    return render(request, 'station-tracker.html', context)
