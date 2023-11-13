@@ -1,10 +1,55 @@
-<h1>Signup</h1>
+<!-- signup.html -->
+{% load static %}
+<style>
+    body {
+        background-color: #f0f0f0; 
+    }
+    header {
+         background-color: #ffa200;
+         line-height: 10px;
+         padding: 10px;
+     }
+    h1 {
+        display: flex;
+        align-items: center;
+    }
+
+    h1 img {
+        margin-right: 10px; 
+    }
+
+    .footer {
+        background-color: blue; /* Set footer background color to blue */
+        color: white; /* Set footer text color to white */
+        padding: 10px; /* Adjust padding as needed */
+        text-align: center; /* Center text in the footer */
+    }
+    #submit-button {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+    #cancel-button {
+        background-color: #f44336; /* Red */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<header>
+<h1><img src="{% static 'assets/img/gas-logo.png' %}" alt="Logo"> Signup</h1>
+  </header>
+<!--<h1>Signup</h1>-->
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="p-2">
-      <form onsubmit="return handleData()" method="post" action="https://postman-echo.com/post">
-      <div >
+      <form onsubmit="return handleData()" method="post" action="https://postman-echo.com/post"> 
+      
+      <div > 
       <input type="checkbox" name="customer" id="customer" />
       <label for="Customer">Customer</label>
       </div>
@@ -18,7 +63,6 @@
     <button type="button" id="cancel-button">Back</button> 
     <div>
       <p>Already have an account? <a href="{% url 'login' %}">Login</a</div>
-    <!--<a href="{% url 'login' %}">Already have account?</a> --> 
     
 </form>
 
@@ -31,11 +75,11 @@
   </ul>
 {% endif %}
 
-<div id="success-message" style="display: none;">
+<div  class="footer" id="success-message" style="display: none;">
    Account Created Successfully !!
 </div>
 <script>  
-
+  
   // Add an event listener to the "Submit" button
            document.getElementById("submit-button").addEventListener("click", function() {
                // Show the success message when the "Submit" button is clicked
@@ -45,7 +89,7 @@
   // Add an event listener to the "Cancel" button
   document.getElementById("cancel-button").addEventListener("click", function() {
       // Redirect to the movie list page when the "Cancel" button is clicked
-     window.location.href = "{% url 'login' %}";
+     window.location.href = "{% url 'index' %}";
   });
 
 </script>

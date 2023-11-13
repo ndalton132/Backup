@@ -1,27 +1,58 @@
-<h1>Login</h1>
-<form method="POST">
+<!-- login.html -->
+{% load static %}
+<style>
+    body {
+        background-color: #f0f0f0; 
+    }
+    header {
+         background-color: #ffa200;
+         line-height: 10px;
+         padding: 10px;
+     }
+    h1 {
+        display: flex;
+        align-items: center;
+    }
+    h1 img {
+        margin-right: 10px; /* Adjust the margin as needed for spacing */
+    }
+    .footer {
+        background-color: blue; /* Set footer background color to blue */
+        color: white; /* Set footer text color to white */
+        padding: 10px; /* Adjust padding as needed */
+        text-align: center; /* Center text in the footer */
+    }
+    #submit-button {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+    #cancel-button {
+        background-color: #f44336; /* Red */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+<header>  
+<h1><img src="{% static 'assets/img/gas-logo.png' %}" alt="Logo"> Login</h1>
+</header>
+<form method="POST" id="login-form">
     {% csrf_token %}
     {{ form.as_p }}
-  <!--<button type="submit">Login</button>
-    <a href="{% url 'signup' %}">Dont have Account Create</a> -->
-    <div class="p-2">
-      <form onsubmit="return handleData()" method="post" action="https://postman-echo.com/post">
-      <div >
+     <div class="p-2">
       <input type="checkbox" name="customer" id="customer" />
       <label for="Customer">Customer</label>
-      </div>
-      <div>
       <input type="checkbox" name="gas_station_owner" id="gas_station_owner" />
       <label for="agree">Gas Station Owner</label>
-      </div>
     </div>
-    <!--<button type="submit">Create Account</button>-->
     <button type="button" id="submit-button">Login</button>
     <button type="button" id="cancel-button">Back</button> 
     <div>
-      <p>Dont have Account? Create<a href="{% url 'signup' %}">Sign Up</a</div>
-    <!--<a href="{% url 'login' %}">Already have account?</a> --> 
-
+      <p>Don't have an Account? Create<a href="{% url 'signup' %}">Sign Up</a></div> 
 </form>
 
 {# Display messages here #}
@@ -37,18 +68,32 @@
    Logged in Successfully !!
 </div>
 <script>  
+document.getElementById("submit-button").addEventListener("click", function() {
+    // Get the form data
+    var formData = new FormData(document.getElementById("login-form"));
+    
+    // Make an AJAX request to authenticate the user
+    fetch("{% url 'login' %}", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show the success message when the user is authenticated
+            document.getElementById("success-message").style.display = "block";
+            window.location.href = "{% url 'index' %}";
+        } else {
+            // Show an error message when the user is not authenticated
+            alert("Invalid username or password. Please try again.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+});
 
-  // Add an event listener to the "Submit" button
-           document.getElementById("submit-button").addEventListener("click", function() {
-               // Show the success message when the "Submit" button is clicked
-               document.getElementById("success-message").style.display = "block";
-           });
-
-  // Add an event listener to the "Cancel" button
-  document.getElementById("cancel-button").addEventListener("click", function() {
-      // Redirect to the movie list page when the "Cancel" button is clicked
-     window.location.href = "{% url 'login' %}";
-  });
-
+document.getElementById("cancel-button").addEventListener("click", function() {
+    window.location.href = "{% url 'index' %}";
+});
 </script>
-
