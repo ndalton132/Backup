@@ -5,6 +5,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.test import Client  # Use Django's test client
+from .models import Feedback
 
 class MyTestCase(TestCase):
 
@@ -25,3 +26,6 @@ class MyTestCase(TestCase):
          self.assertEqual(response.status_code, 302)  # 302 is the status code for a redirect
          self.assertFalse(response.context['user'].is_authenticated)
 
+
+class FeedbackTestCases(TestCase):
+  

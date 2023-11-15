@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
-from .forms import UserCreationForm, LoginForm
+from .forms import UserCreationForm, LoginForm, FeedbackForm
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from .models import Feedback
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
+
+
 
 # Create your views here.
 #def home(request):
@@ -45,5 +48,14 @@ def user_logout(request):
     return redirect('login')
 
 
-def feedback_form(request):
-  return render(request, 'feedback.html')
+def render_feedback_form(request):
+  if request.method == 'POST':
+    form = FeedbackForm(request.POST)
+    if form.is_valid():
+      form.save()
+      messages.success(request, "Your feedback has been submitted!")
+      return redirect('feedback')
+  else: 
+    form = FeedbackForm()
+  return render(request, 'feedback.html', {'form': form})
+
