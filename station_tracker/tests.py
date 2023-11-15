@@ -28,4 +28,13 @@ class MyTestCase(TestCase):
 
 
 class FeedbackTestCases(TestCase):
-  
+
+  def test_successful_submit(self):
+    client = Client()
+    response = client.post(reverse('feedback'), {'name': 'test', 'email': 'tzirw@example.com', 'phone': '1234567890', 'comments': 'test comments', 'gasStationAddr': '123 AnyPlace'})
+    self.assertEqual(response.status_code, 302)
+
+  def test_missing_name(self):
+    client = Client()
+    response = client.post(reverse('feedback'), {'email': 'tzirw@example.com', 'phone': '1234567890', 'comments': 'test comments', 'gasStationAddr': '123 AnyPlace'})
+    self.assertFormError(response, 'form', 'name', 'This field is required.')
