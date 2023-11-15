@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import UserCreationForm, LoginForm
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .models import Feedback, Gas_Station
+from geopy.geocoders import Nominatim
 import folium
 
 # Create your views here.
@@ -50,9 +51,22 @@ def feedback_form(request):
   return render(request, 'feedback.html')
 
 def test_url(request):
+    
+    geolocator = Nominatim(timeout=10, user_agent="Fuel Buddy")
+    location = 'Colorado'
+    
     stations =  Gas_Station.objects.all()
     
-    station_map = folium.Map(location=[38.83528, -104.82118], zoom_start=13)
+    location = "Colorado springs" # For testing
+
+    locator = geolocator.geocode(location)
+    if location is 'Colorado':
+        station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=8)
+    else:
+        station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=13)
+
+    
+    folium.Marker([locator.latitude, locator.longitude]).add_to(station_map)    
 
     for station in stations:
         coords = (station.latitude, station.longitude)
