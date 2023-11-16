@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from .forms import UserCreationForm, LoginForm
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from .models import Feedback
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Feedback, AboutUs
+from .models import Feedback, AboutUs, Gas_Station
 from django.http import HttpResponse
 from geopy.geocoders import Nominatim
 from geopy.distance import Geodesic
+from .forms import FeedbackForm
 import folium
 
 

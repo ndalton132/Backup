@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 
 
-
 class Gas_Station(models.Model):
   station_name = models.CharField(max_length=200)
   latitude = models.FloatField()
