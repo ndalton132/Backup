@@ -1,8 +1,9 @@
-
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from . import models
+from django.forms import ModelForm, Textarea
+from .models import Feedback
 
 class SignupForm(UserCreationForm):
     class Meta:
@@ -15,5 +16,18 @@ class LoginForm(forms.Form):
 
 class GasPriceUpdateForm(forms.ModelForm):
   class Meta:
-      model = models.GasStation
-      fields = ['regular_gas_price', 'premium_gas_price', 'diesel_price', 'name']
+      model = models.Gas_Station
+      fields = ['regular_gas_price', 'premium_gas_price', 'diesel_price', 'station_name']
+
+class FeedbackForm(ModelForm):
+  class Meta:
+    model = Feedback
+    fields = ['name', 'email', 'phone', 'comments', 'gasStationAddr']
+    widgets = {
+      'name' : forms.TextInput(attrs={'class': 'form-control', 'placeholder' : 'Name'}),
+      'email' : forms.EmailInput(attrs={'class': 'form-control', 'placeholder' : 'Email'}),
+      'phone' : forms.NumberInput(attrs={'class': 'form-control', 'placeholder' : 'Phone Number'}),
+      'comments': Textarea(attrs= {'placeholder':'Leave a comment/review', 'class':'form-control', 'rows':'5'}),
+      'gasStationAddr' : forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Gas Station Address'}),
+    }
+ 

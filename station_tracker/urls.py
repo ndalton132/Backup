@@ -10,5 +10,8 @@ urlpatterns = [
    path('logout/', views.user_logout, name='logout'),
    path('update_gas_prices/', views.update_gas_prices, name="update_gas_prices"),
    path('feedback/', views.feedback_form, name="feedback"),
+   path('feedback/', views.render_feedback_form, name="feedback"),
+   path('station-tracker/', views.map_view, name="station-tracker"),
+   
 ]
 
