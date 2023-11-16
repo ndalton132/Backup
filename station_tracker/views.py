@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout 
 from .forms import UserCreationForm, LoginForm, GasPriceUpdateForm
+from django.shortcuts import render, get_object_or_404, get_list_or_404
+from .models import Feedback
 
 # Create your views here.
 #def home(request):
@@ -50,3 +52,6 @@ def update_gas_prices(request):
         form.save()
   Gas_Price_Update_Form = GasPriceUpdateForm()
   return render(request, 'update_gas_prices.html', {"Gas_Price_Update_Form": Gas_Price_Update_Form})
+
+def feedback_form(request):
+  return render(request, 'feedback.html')
