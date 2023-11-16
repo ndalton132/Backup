@@ -16,4 +16,4 @@ class LoginForm(forms.Form):
 class GasPriceUpdateForm(forms.ModelForm):
   class Meta:
       model = models.GasStation
-      fields = ['regular_gas_price', 'premium_gas_price', 'diesel_price']
+      fields = ['regular_gas_price', 'premium_gas_price', 'diesel_price', 'name']
