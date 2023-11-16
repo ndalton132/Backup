@@ -9,7 +9,16 @@ class Feedback(models.Model):
   message = models.TextField()
   created_at = models.DateTimeField(auto_now_add=True)
   #todo: implement pointer to company
+
+  # Model for the About Us page
+class AboutUs(models.Model):
+    # Fields for the About Us page
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to='about_us_images/')
+    # Add any other fields you need for the About Us page
+
   
-  def __str__(self):
+def __str__(self):
     return self.name
 
