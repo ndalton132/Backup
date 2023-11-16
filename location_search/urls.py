@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.map_view, name='findGas'),
     # Other paths go here
     path('search',views.submit, name='submit')
+
+    
 ]
