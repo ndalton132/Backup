@@ -1,7 +1,5 @@
-from django.urls import path
-from .views import home
+from django.urls import path, include
 from location_search import views as searchViews
-#from .views import home
 from . import views
 
 urlpatterns = [
@@ -12,8 +10,11 @@ urlpatterns = [
    path('logout/', views.user_logout, name='logout'),
 
     #Find Gas stations button
-   path('location_search/', searchViews.searchPage, name = "findGas"),
-
+   path('location_search/', searchViews.map_view, name = "findGas"),
+  path('location_search/', include('location_search.urls')),
     
+
+   path('feedback/', views.feedback_form, name="feedback"),
+   path('station-tracker/', views.map_view, name="station-tracker"),
 ]
 
