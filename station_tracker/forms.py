@@ -6,10 +6,19 @@ from django.forms import ModelForm, Textarea
 from .models import Feedback
 
 class SignupForm(UserCreationForm):
-    class Meta:
+  email = forms.EmailField(required=True)
+  
+  class Meta:
         model = User 
         fields = ['username', 'password1', 'password2']
-
+      
+  def save(self, commit=True):
+      user = super(SignupForm, self).save(commit=False)
+      user.email = self.cleaned_data['email']
+      if commit:
+        user.save()
+        return user
+        
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)

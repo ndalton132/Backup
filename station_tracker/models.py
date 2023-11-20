@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-# Create your models here.
 class Gas_Station(models.Model):
   station_name = models.CharField(max_length=200)
   latitude = models.FloatField()
@@ -20,6 +19,15 @@ class Feedback(models.Model):
     phone = models.IntegerField()
     comments = models.TextField()
     gasStationAddr = models.CharField(max_length=200)
-    
-    def __str__(self):
+  
+    # Model for the About Us page
+class AboutUs(models.Model):
+    # Fields for the About Us page
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    image = models.ImageField(upload_to='about_us_images/')
+    # Add any other fields you need for the About Us page
+
+  
+def __str__(self):
         return self.name
