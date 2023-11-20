@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Python on Replit
 
 This is a template to get you started with Python on Replit. It's ready to go so you can just hit run and start coding!
@@ -32,4 +31,3 @@ If you need help you might be able to find an answer on our [docs](https://docs.
 =======
 # Group 3 F2023
 ## Gas Price Tracker
->>>>>>> origin/main
