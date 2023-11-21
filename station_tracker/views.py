@@ -13,7 +13,6 @@ import folium
 
 
 
-
 # Create your views here.
 #def home(request):
 # return render(request, 'index.html')
@@ -109,3 +108,12 @@ def map_view(request):
 
 def user_about(request):
   return render(request, 'about.html')
+
+def user_fueldemand(request):
+  return render(request, 'fueldemand.html')
+
+def user_stationowner(request):
+  return render(request, 'stationowner.html')
+
+def user_payment(request):
+  return render(request, 'payment.html')

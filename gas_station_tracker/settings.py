@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'station_tracker',
     'phonenumber_field',
-]
+
+   ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

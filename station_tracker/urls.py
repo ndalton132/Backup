@@ -13,5 +13,8 @@ urlpatterns = [
    path('station-tracker/', views.map_view, name="station-tracker"),
    
    path('about/', views.user_about, name="about"),
+   path('fueldemand/', views.user_fueldemand, name="fueldemand"),
+   path('stationowner/', views.user_stationowner, name="stationowner"),
+   path('payment/', views.user_payment, name="payment"),
 ]
 

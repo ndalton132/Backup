@@ -7,6 +7,15 @@ from django.contrib.auth.models import User
 from django.test import Client  # Use Django's test client
 from .models import Feedback
 
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append('/home/runner/group3-fall2023-1')  # Add this line
+os.environ['DJANGO_SETTINGS_MODULE'] = 'station_tracker.settings'
+
+
+
 class MyTestCase(TestCase):
 
     def test_user_signup_view(self):
