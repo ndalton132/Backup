@@ -47,7 +47,7 @@ def map_view(request):
     location = "Colorado springs" # For testing, doesn't need structure so it can be any address string. zipcodes seem to be the most accurate though.
 
     locator = geolocator.geocode(location) # converts addresses to coordinates
-    if location is 'Colorado':
+    if location == 'Colorado':
         station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=8)
     else:
         station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=13)
@@ -73,7 +73,7 @@ def map_viewSubmit(request):
     location = "Colorado springs" # For testing, doesn't need structure so it can be any address string. zipcodes seem to be the most accurate though.
 
     locator = geolocator.geocode(location) # converts addresses to coordinates
-    if location is 'Colorado':
+    if location == 'Colorado':
         station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=8)
     else:
         station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=13)

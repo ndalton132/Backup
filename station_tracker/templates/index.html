@@ -51,13 +51,22 @@ background-position: center;background-size: cover;">
                     <h2 class="fw-bold mb-2" style="text-shadow: 2px 0px var(--bs-primary-text-emphasis);">Find Gas Stations</h2>
                     <p class="mb-0" style="font-size: 17px;">Quickly compare prices for gas stations near your location.</p>
                 </div>
-
-
                 <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="{% url 'findGas' %}">Find Gas Stations</a></div>
-
             </div>
         </div>
     </section>
+  <section class="py-4 py-xl-5">
+      <div class="container">
+          <div class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5" style="box-shadow: 4px 2px 4px var(--bs-primary-text-emphasis);">
+              <div class="pb-2 pb-lg-1">
+                  <h2 class="fw-bold mb-2" style="text-shadow: 2px 0px var(--bs-primary-text-emphasis);">Update a Price</h2>
+                  <p class="mb-0" style="font-size: 17px;">Update a gas station price near your location.</p>
+              </div>
+            <div class="my-2">
+              <a class="btn btn-light fs-5 py-2 px-4" role="button" href="{% url 'update_gas_prices' %}">Update Gas Price</a></div>
+            </div>
+      </div>
+  </section>
     <section class="py-4 py-xl-5">
         <div class="container">
             <div class="text-white bg-primary border rounded border-0 border-primary d-flex flex-column justify-content-between flex-lg-row p-4 p-md-5" style="box-shadow: 4px 2px 4px var(--bs-primary-text-emphasis);">
@@ -83,7 +92,7 @@ background-position: center;background-size: cover;">
     <footer class="text-center">
         <div class="container text-muted py-4 py-lg-5">
             <ul class="list-inline">
-                <li class="list-inline-item me-4"><a class="link-secondary" href="#">Link 1</a></li>
+              <li class="list-inline-item me-4"><a class="link-secondary" href="#">Link 1</a></li>
                 <li class="list-inline-item me-4"><a class="link-secondary" href="#">Link 2</a></li>
                 <li class="list-inline-item"><a class="link-secondary" href="#">Link 3</a></li>
             </ul>

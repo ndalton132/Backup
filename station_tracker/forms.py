@@ -1,6 +1,7 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from . import models
 from django.forms import ModelForm, Textarea
 from .models import Feedback
 
@@ -26,6 +27,10 @@ class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
+class GasPriceUpdateForm(forms.ModelForm):
+  class Meta:
+      model = models.Gas_Station
+      fields = ['regular_gas_price', 'premium_gas_price', 'diesel_price', 'station_name']
 
 class FeedbackForm(ModelForm):
   class Meta:
