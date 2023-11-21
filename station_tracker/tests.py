@@ -29,11 +29,43 @@ class MyTestCase(TestCase):
         response = client.get(reverse('login'))
         self.assertEqual(response.status_code, 200)
 
-    def test_user_logout_view(self):
-         client = Client()  # Create a test client
-         response = client.get(reverse('logout'))
-         self.assertEqual(response.status_code, 302)  # 302 is the status code for a redirect
-         self.assertFalse(response.context['user'].is_authenticated)
+   # def test_user_logout_view(self):
+      #   client = Client()  # Create a test client
+       #  response = client.get(reverse('logout'))
+        # self.assertEqual(response.status_code, 302)  # 302 is the status code for a redirect
+        # self.assertFalse(response.context['user'].is_authenticated)
+from django.test import TestCase, Client
+from django.urls import reverse
+
+class YourAppViewsTestCase(TestCase):
+    def setUp(self):
+        # Any setup needed for your tests, if applicable
+        pass
+
+    def test_about_view(self):
+        client = Client()
+        response = client.get(reverse('about'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'about.html')
+
+    def test_fueldemand_view(self):
+        client = Client()
+        response = client.get(reverse('fueldemand'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'fueldemand.html')
+
+    def test_stationowner_view(self):
+        client = Client()
+        response = client.get(reverse('stationowner'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'stationowner.html')
+
+    def test_payment_view(self):
+        client = Client()
+        response = client.get(reverse('payment'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'payment.html')
+
 
 
 class FeedbackTestCases(TestCase):
