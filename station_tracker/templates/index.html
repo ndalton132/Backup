@@ -17,11 +17,11 @@
                     </svg></span><span class="focus-ring focus-ring-primary" style="font-weight: bold;font-size: 24px;">Fuel Buddy</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-4"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-4">
                 <ul class="navbar-nav me-auto">
-                    <!--<li class="nav-item"><a class="nav-link fw-bold" href="#">First Item</a></li>-->
+                    <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'fueldemand'%}">Fuel Demand</a></li>
                     <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'about'%}">About Us</a></li>
                     <li class="nav-item"><a class="nav-link fw-bold"href="{% url 'feedback'%}">Feedback Form</a></li>
                 </ul>
-              <div class="d-md-none my-2"><button class="btn btn-light me-2" type="button" href="{% url 'signup' %}" >Log In</button><button class="btn btn-primary" type="button" href="{% url 'login' %}" style="background: rgb(12,57,84);">Sign Up</button></div>
+              <!--  <div class="d-md-none my-2"><button class="btn btn-light me-2" type="button" href="{% url 'signup' %}" >Log In</button><button class="btn btn-primary" type="button" href="{% url 'login' %}" style="background: rgb(12,57,84);">Sign Up</button></div> -->
             </div>
             <div class="d-none d-md-block"><a class="btn btn-primary" role="button" href="{% url 'login' %}" style="background: rgb(235, 238, 242); color: rgb(25, 28, 28);">Log In</a><a class="btn btn-primary" role="button" href="{% url 'signup' %}" style="background: rgb(12,57,84);">Sign Up</a><!--<a class="btn btn-primary" role="button" href="{% url 'logout' %}" style="background: rgb(12,57,84);">Log out</a>--></div>
         </div>
