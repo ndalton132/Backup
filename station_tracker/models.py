@@ -14,12 +14,16 @@ class Gas_Station(models.Model):
     return self.station_name
   
 class Feedback(models.Model):
-        name = models.CharField(max_length=50)
-        email = models.EmailField()
-        phone = models.IntegerField()
-        comments = models.TextField()
-        gasStationAddr = models.CharField(max_length=200)
-    
+  name = models.CharField(max_length=50)
+  email = models.EmailField()
+  phone = models.IntegerField()
+  comments = models.TextField()
+  gasStationAddr = models.CharField(max_length=200)
+
+  def __str__(self):
+    return self.name
+  
+      
         # Model for the About Us page
 class AboutUs(models.Model):
         # Fields for the About Us page
@@ -29,5 +33,4 @@ class AboutUs(models.Model):
         # Add any other fields you need for the About Us page
 
     
-def __str__(self):
-                return self.name
+
