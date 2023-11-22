@@ -1,21 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.contrib.auth import authenticate, login, logout 
-from .forms import UserCreationForm, LoginForm
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from .forms import UserCreationForm, LoginForm, GasPriceUpdateForm, FeedbackForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Feedback, AboutUs, Gas_Station
 from django.http import HttpResponse
 from geopy.geocoders import Nominatim
 from geopy.distance import Geodesic
-from .forms import FeedbackForm
 import folium
-
-
-
-# Create your views here.
-#def home(request):
-# return render(request, 'index.html')
 
 # Create your views here.
 # Home page
@@ -68,6 +60,17 @@ def user_logout(request):
     return redirect('index')
 
 
+def update_gas_prices(request):
+  if request.method == 'POST':
+    form = GasPriceUpdateForm(request.POST)
+    if form.is_valid():
+        form.save()
+  Gas_Price_Update_Form = GasPriceUpdateForm()
+  return render(request, 'update_gas_prices.html', {"Gas_Price_Update_Form": Gas_Price_Update_Form})
+
+def feedback_form(request):
+  return render(request, 'feedback.html')
+  
 def render_feedback_form(request):
   if request.method == 'POST':
     form = FeedbackForm(request.POST)
@@ -79,7 +82,6 @@ def render_feedback_form(request):
     form = FeedbackForm()
   return render(request, 'feedback.html', {'form': form})
 
-
 def map_view(request):
     
     geolocator = Nominatim(timeout=10, user_agent="Fuel Buddy")
@@ -90,7 +92,7 @@ def map_view(request):
     location = "Colorado springs" # For testing, doesn't need structure so it can be any address string. zipcodes seem to be the most accurate though.
 
     locator = geolocator.geocode(location) # converts addresses to coordinates
-    if location is 'Colorado':
+    if location == 'Colorado':
         station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=8)
     else:
         station_map = folium.Map(location=[locator.latitude, locator.longitude], zoom_start=13)
@@ -104,6 +106,7 @@ def map_view(request):
         folium.Marker(coords).add_to(station_map)
 
     context = {'map': station_map._repr_html_()}
+
     return render(request, 'station-tracker.html', context)
 
 def user_about(request):

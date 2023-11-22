@@ -41,6 +41,7 @@ MarkupSafe==2.1.3
 mccabe==0.7.0
 msgpack==1.0.2
 numpy @ file:///home/runner/.cache/pypoetry/artifacts/0a/f1/63/4e86e206dd78b5ffa1d0b33299c8275c3e1a2411fac9d63320ce69de5f/numpy-1.22.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+numpy==1.24.4
 packaging==20.9
 parso==0.5.2
 pastel==0.2.1

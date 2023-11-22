@@ -1,6 +1,5 @@
-from django.test import TestCase
-
 # Create your tests here.
+
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -68,6 +67,7 @@ class YourAppViewsTestCase(TestCase):
 
 
 
+
 class FeedbackTestCases(TestCase):
 
   def test_successful_submit(self):
@@ -79,3 +79,4 @@ class FeedbackTestCases(TestCase):
     client = Client()
     response = client.post(reverse('feedback'), {'email': 'tzirw@example.com', 'phone': '1234567890', 'comments': 'test comments', 'gasStationAddr': '123 AnyPlace'})
     self.assertFormError(response, 'form', 'name', 'This field is required.')
+
